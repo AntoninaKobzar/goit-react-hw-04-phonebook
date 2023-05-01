@@ -22,7 +22,6 @@ function App() {
 
 
   const addContact = data => {
-    console.log(data,'data')
     if (
       contacts.find(
         contact => contact.name.toLowerCase() === data.name.toLowerCase()
