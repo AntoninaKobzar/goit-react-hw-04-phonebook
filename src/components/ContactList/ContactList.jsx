@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import css from './ContactList.module.css';
 import ContactItem from '../ContactItem';
 
-const ContactList = ({contacts,onDeleteContact}) => {
+const ContactList = ({getFilteredContact,onDeleteContact}) => {
     return (
         <ul className={css.list}>
-            {contacts.map(contact => (
+            {getFilteredContact().map(contact => (
                 <ContactItem
                     contact={contact}
                     onDeleteContact={onDeleteContact}
@@ -17,13 +17,7 @@ const ContactList = ({contacts,onDeleteContact}) => {
 };
 
 ContactList.propTypes = {
-    contacts: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.string.isRequired,
-            name: PropTypes.string.isRequired,
-            number: PropTypes.string.isRequired,
-        }),
-    ),
+    getFilteredContact: PropTypes.func.isRequired,
     onDeleteContact: PropTypes.func.isRequired,
 };
 
